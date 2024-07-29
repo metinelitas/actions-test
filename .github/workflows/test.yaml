@@ -1,0 +1,17 @@
+# Action name
+name: Test Workflow
+
+on:
+    pull_request:
+        branches: [ devel ]
+    workflow_dispatch:
+
+jobs:
+    linux-build:
+        runs-on: ubuntu-20.04
+        steps:
+            - name: Install dependencies
+              shell: bash
+              run: |
+                sudo apt update
+                sudo apt install --assume-yes ubuntu-restricted-extras
