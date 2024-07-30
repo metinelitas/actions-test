@@ -1,3 +1,2 @@
 # actions-test
-Test
-test2
+Test1
