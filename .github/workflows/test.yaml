@@ -8,10 +8,13 @@ on:
 
 jobs:
     linux-build:
-        runs-on: ubuntu-20.04
-        steps:
-            - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-            - run: echo "🎉 Event ref is ${{ github.event.ref }}."
-            - run: echo "🎉 PR payload action ${{ github.event.action }}."
-            - run: echo "🎉 PR head ${{ github.event.pull_request.head.ref }}."
-            - run: echo "🎉 PR base ${{ github.event.pull_request.base.ref }}."
+      runs-on: ubuntu-20.04
+      steps:
+        - name: Print some info about the repo.
+          if: github.event.pull_request.base.ref == 'devel'
+          run: | 
+            echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+            echo "🎉 Event ref is ${{ github.event.ref }}."
+            echo "🎉 PR payload action ${{ github.event.action }}."
+            echo "🎉 PR head ${{ github.event.pull_request.head.ref }}."
+            echo "🎉 PR base ${{ github.event.pull_request.base.ref }}.""
