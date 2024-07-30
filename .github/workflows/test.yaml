@@ -17,4 +17,5 @@ jobs:
           echo "🎉 Event ref is ${{ github.event.ref }}."
           echo "🎉 PR payload action ${{ github.event.action }}."
           echo "🎉 PR head ${{ github.event.pull_request.head.ref }}."
-          echo "🎉 PR base ${{ github.event.pull_request.base.ref }}.""
+          echo "🎉 PR base ${{ github.event.pull_request.base.ref }}."
+
