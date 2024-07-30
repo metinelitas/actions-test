@@ -11,7 +11,7 @@ jobs:
   linux-build:
     runs-on: ubuntu-20.04
     steps:
-      - name: Print some info about the repo.
+      - name: Print some info about the repo New one.
         if: github.event.pull_request.base.ref == 'devel'
         run: | 
           echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -19,7 +19,7 @@ jobs:
           echo "🎉 PR payload action ${{ github.event.action }}."
           echo "🎉 PR head ${{ github.event.pull_request.head.ref }}."
           echo "🎉 PR base ${{ github.event.pull_request.base.ref }}."
-      - name: Check if we are merging to main branch.
+      - name: Check if we are merging to main branch New one.
         if: github.event.pull_request.base.ref == 'main'
         run: | 
           echo "💩 The job was automatically triggered by a ${{ github.event_name }} event."
