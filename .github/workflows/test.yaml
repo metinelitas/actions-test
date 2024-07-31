@@ -23,8 +23,8 @@ jobs:
          echo "🤡 The job was automatically triggered by a ${{ github.event_name }} event."
          echo "$GITHUB_CONTEXT"
 
-      - name: This should run only when we merge something to devel.
-        if: github.event.pull_request.base.ref == 'devel' && github.event.pull_request.merged == true
+      - name: This should run only when devel is updated
+        if: github.ref == 'refs/heads/devel'
 
         run: | 
           echo "👺 The job was automatically triggered by a ${{ github.event_name }} event."
