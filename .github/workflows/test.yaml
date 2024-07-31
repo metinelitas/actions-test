@@ -29,7 +29,7 @@ jobs:
           
 
       - name: This should run only when we push a tag to main.
-        if: startsWith(github.ref, 'refs/tags/') && github.ref_type == 'tag' && github.base_ref == 'main'
+        if: startsWith(github.ref, 'refs/tags/') && github.ref_type == 'tag' && github.event.base_ref == 'refs/heads/main'
         run: | 
           echo "🥶 The job was automatically triggered by a ${{ github.event_name }} event."
 
