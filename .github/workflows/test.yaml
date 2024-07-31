@@ -2,6 +2,9 @@
 name: Test Workflow
 
 on:
+  push:
+    tags:
+      - "*"
   pull_request:
     branches:
       - devel
