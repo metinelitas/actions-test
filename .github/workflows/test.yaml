@@ -11,21 +11,33 @@ jobs:
   linux-build:
     runs-on: ubuntu-20.04
     steps:
-      - name: Print some info about the repo.
-        if: github.event.pull_request.base.ref == 'devel'
-        run: | 
-          echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-          echo "🎉 Event ref is ${{ github.event.ref }}."
-          echo "🎉 PR payload action ${{ github.event.action }}."
-          echo "🎉 PR head ${{ github.event.pull_request.head.ref }}."
-          echo "🎉 PR base ${{ github.event.pull_request.base.ref }}."
-      - name: Check if we are merging to main branch.
-        if: github.event.pull_request.base.ref == 'main'
-        run: | 
-          echo "💩 The job was automatically triggered by a ${{ github.event_name }} event."
-          echo "💩 Event ref is ${{ github.event.ref }}."
-          echo "💩 PR payload action ${{ github.event.action }}."
-          echo "💩 PR head ${{ github.event.pull_request.head.ref }}."
-          echo "💩 PR base ${{ github.event.pull_request.base.ref }}."          
+      - name: This should run on every PR action where target is devel or main.
+        run: echo "🤡 The job was automatically triggered by a ${{ github.event_name }} event."
+
+      - name: This should run only when we merge something to devel.
+        if: github.event.pull_request.base.ref == 'devel' && github.event.pull_request.merged == true
+        run: echo "👺 The job was automatically triggered by a ${{ github.event_name }} event."
+
+      - name: This should run only when we push a tag to main.
+        if: github.event_name == 'push' && github.ref == 'refs/tags/main'
+        run: echo "🥶 The job was automatically triggered by a ${{ github.event_name }} event."        
+
+        
+      # - name: Print some info about the repo.
+      #   if: github.event.pull_request.base.ref == 'devel'
+      #   run: | 
+      #     echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      #     echo "🎉 Event ref is ${{ github.event.ref }}."
+      #     echo "🎉 PR payload action ${{ github.event.action }}."
+      #     echo "🎉 PR head ${{ github.event.pull_request.head.ref }}."
+      #     echo "🎉 PR base ${{ github.event.pull_request.base.ref }}."
+      # - name: Check if we are merging to main branch.
+      #   if: github.event.pull_request.base.ref == 'main'
+      #   run: | 
+      #     echo "💩 The job was automatically triggered by a ${{ github.event_name }} event."
+      #     echo "💩 Event ref is ${{ github.event.ref }}."
+      #     echo "💩 PR payload action ${{ github.event.action }}."
+      #     echo "💩 PR head ${{ github.event.pull_request.head.ref }}."
+      #     echo "💩 PR base ${{ github.event.pull_request.base.ref }}."          
 
 
